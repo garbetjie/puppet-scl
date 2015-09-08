@@ -1,7 +1,42 @@
 define scl::collection
-{
-	$repo_name = $name,
-	$repo_description = undef,
-	$repo_url = undef,
+(
+	# Repo configuration.
+	$repo_baseurl,
+	$repo_descr = undef,
+	$repo_ensure = present,
+	$repo_gpgcheck = false,
+	$repo_enabled = true,
 
+	$os_versions = [],
+
+	# Package installation
+	$package_install = undef,
+)
+
+{
+	# Specific versions are allowed.
+	if count( $os_versions ) > 0 and member( $os_versions, $::operatingsystemmajrelease ) == false {
+		fail(
+			join( [
+				"Unsupported OS major release ${::operatingsystemmajrelease}. ",
+				"SCL collection ${name} only supports versions [",
+				join( $os_versions, "," ),
+				"]"
+			], "" )
+		)
+	}
+
+	yumrepo { $name:
+		descr => $repo_descr,
+		baseurl => $repo_baseurl,
+		ensure => $repo_ensure,
+		gpgcheck => $repo_gpgcheck,
+	}
+
+	if $package_install {
+		package { $package_install:
+			ensure => present,
+			require => Yumrepo[ $name ],
+		}
+	}
 }
