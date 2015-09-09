@@ -31,6 +31,7 @@ define scl::collection
 		baseurl => $repo_baseurl,
 		ensure => $repo_ensure,
 		gpgcheck => $repo_gpgcheck,
+		enabled => $repo_enabled,
 	}
 
 	if $package_install {
