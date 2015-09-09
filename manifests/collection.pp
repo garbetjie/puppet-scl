@@ -4,8 +4,8 @@ define scl::collection
 	$repo_baseurl,
 	$repo_descr = undef,
 	$repo_ensure = present,
-	$repo_gpgcheck = false,
-	$repo_enabled = true,
+	$repo_gpgcheck = 0,
+	$repo_enabled = 1,
 
 	$os_versions = [],
 
