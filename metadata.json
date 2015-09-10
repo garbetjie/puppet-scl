@@ -2,7 +2,7 @@
   "name": "garbetjie-scl",
   "version": "0.0.1",
   "author": "garbetjie",
-  "summary": "Managing SCL collections for RedHat/CentOS 6 & 7",
+  "summary": "Manages SCL collections for RedHat/CentOS 6 & 7",
   "license": "MIT",
   "source": "https://github.com/garbetjie/puppet-scl",
   "project_page": "https://github.com/garbetjie/puppet-scl",
