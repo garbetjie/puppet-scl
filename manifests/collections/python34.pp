@@ -1,6 +1,6 @@
 class scl::collections::python34
 (
-	$packages = "python34"
+	$packages = "rh-python34"
 )
 
 {
